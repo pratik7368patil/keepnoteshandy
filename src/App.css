@@ -1,0 +1,19 @@
+body {
+  overflow-y: scroll;
+}
+
+.head {
+  font-weight: bold;
+}
+
+.main-section {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-section > h1 {
+  margin-left: 10px;
+}
