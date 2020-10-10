@@ -7,19 +7,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Typography from "@material-ui/core/Typography";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
-
-const getRamdomColor = () => {
-  const colors = [
-    "#E16186",
-    "#6CD569",
-    "#6596FF",
-    "#E2A13B",
-    "#E67679",
-    "#7ABBCE",
-  ];
-  const getIndex = (Math.random() * colors.length).toFixed();
-  return `3px solid ${colors[getIndex]}`;
-};
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px 10px 10px 0px",
     maxWidth: 360,
     width: 360,
-    borderTop: getRamdomColor(),
+    borderTop: "3px solid #6596FF",
   },
   details: {
     display: "flex",
@@ -48,10 +36,13 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(1),
   },
   delBtn: {
-    color: "red",
+    color: "#2B2B2B",
+    "&:hover": {
+      color: "red",
+    },
   },
   doneBtn: {
-    color: "green",
+    color: "#228b22",
   },
 }));
 
@@ -78,22 +69,26 @@ export default function ListItem(props) {
           </Typography>
         </CardContent>
         <div className={classes.controls}>
-          <IconButton
-            aria-label="done"
-            onClick={() => onDone(item.id, projectId)}
-          >
-            {item.isComplete ? (
-              <CheckCircleIcon className={classes.doneBtn} />
-            ) : (
-              <RadioButtonUncheckedIcon />
-            )}
-          </IconButton>
-          <IconButton
-            aria-label="delete"
-            onClick={() => onDelete(item.id, projectId)}
-          >
-            <DeleteIcon className={classes.delBtn} />
-          </IconButton>
+          <Tooltip title={item.isComplete ? "In Process" : "Done"} arrow>
+            <IconButton
+              aria-label="done"
+              onClick={() => onDone(item.id, projectId)}
+            >
+              {item.isComplete ? (
+                <CheckCircleIcon className={classes.doneBtn} />
+              ) : (
+                <RadioButtonUncheckedIcon />
+              )}
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete" arrow>
+            <IconButton
+              aria-label="delete"
+              onClick={() => onDelete(item.id, projectId)}
+            >
+              <DeleteIcon className={classes.delBtn} />
+            </IconButton>
+          </Tooltip>
         </div>
       </div>
     </Card>

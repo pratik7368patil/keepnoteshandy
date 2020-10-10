@@ -1,5 +1,4 @@
 import React from "react";
-import "./project.css";
 import List from "./List";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -15,7 +14,7 @@ function Project(props) {
         </Box>
       </Typography>
       <List
-        myList={project}
+        newProjectList={project}
         onEnter={addElement}
         onDelete={onDelete}
         onDone={onDone}

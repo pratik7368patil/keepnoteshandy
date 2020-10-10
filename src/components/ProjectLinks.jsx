@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import { Delete } from "@material-ui/icons";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,12 +23,15 @@ const useStyles = makeStyles((theme) => ({
     margin: 2,
     borderRadius: 5,
     "&:hover": {
-      background: "#6A5EDA",
+      background: "#2B2B2B",
       color: "white",
     },
   },
   deleteIcon: {
-    color: "red",
+    color: "#2B2B2B",
+    "&:hover": {
+      color: "red",
+    },
   },
 }));
 
@@ -35,15 +39,21 @@ export default function ProjectLinks(props) {
   const classes = useStyles();
 
   const { list, addNewProject, deleteProject } = props;
+  const [validityOfNewProject, setValidityOfNewProject] = React.useState(false);
+  const updateValidityAndAddNewProject = (event) => {
+    setValidityOfNewProject(addNewProject(event));
+  };
   return (
     <div className={classes.root}>
       <TextField
+        error={validityOfNewProject}
         id="add-project"
         label="Add Project"
         variant="outlined"
-        onKeyUp={addNewProject}
+        helperText={validityOfNewProject ? "Project already exists!" : ""}
+        onKeyUp={(event) => updateValidityAndAddNewProject(event)}
       />
-      <List component="nav" aria-label="main mailbox folders">
+      <List component="nav" aria-label="project list">
         {list.map((project) => {
           return (
             <div className={classes.listItemContainer} key={project.id}>
@@ -55,9 +65,11 @@ export default function ProjectLinks(props) {
               >
                 <ListItemText primary={project.name} />
               </ListItem>
-              <IconButton onClick={() => deleteProject(project.id)}>
-                <Delete className={classes.deleteIcon} />
-              </IconButton>
+              <Tooltip title="Delete" arrow>
+                <IconButton onClick={() => deleteProject(project.id)}>
+                  <Delete className={classes.deleteIcon} />
+                </IconButton>
+              </Tooltip>
             </div>
           );
         })}

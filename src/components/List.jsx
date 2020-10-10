@@ -16,24 +16,24 @@ const useStyles = makeStyles(() => ({
 
 export default function List(props) {
   const classes = useStyles();
-  const { myList, onEnter, onDelete, onDone } = props;
+  const { newProjectList, onEnter, onDelete, onDone } = props;
   return (
     <div className={classes.mainField}>
       <TextField
         id="add-task"
         label="Add Task"
         variant="outlined"
-        onKeyUp={(event) => onEnter(event, myList.id)}
+        onKeyUp={(event) => onEnter(event, newProjectList.id)}
       />
-      {myList.project.length > 0 ? (
-        myList.project.map((item) => {
+      {newProjectList.project.length > 0 ? (
+        newProjectList.project.map((item) => {
           return (
             <ListItem
               key={item.id}
               item={item}
               onDelete={onDelete}
               onDone={onDone}
-              projectId={myList.id}
+              projectId={newProjectList.id}
             />
           );
         })
