@@ -4,11 +4,12 @@ import "./App.css";
 import { initialList } from "./components/data.js";
 import Project from "./components/Project";
 import ProjectLinks from "./components/ProjectLinks";
+import Home from "./components/Home";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   const initialLocalStorage = localStorage.getItem("mainList");
@@ -118,20 +119,22 @@ function App() {
     <div className="main-section">
       <Router>
         <Grid container>
-          <Grid item>
-            <Typography variant="h4" className="head" color="textSecondary">
-              <Box fontWeight="fontWeightBold" mb={4} mt={2}>
-                Projects
-              </Box>
-            </Typography>
-            <ProjectLinks
-              list={mainList}
-              addNewProject={addNewProject}
-              deleteProject={deleteProject}
-            />
+          <Grid item sm={3}>
+            <Box pl={1}>
+              <Typography variant="h4" color="textSecondary">
+                <Box fontWeight="fontWeightBold" mb={4} mt={2}>
+                  Projects
+                </Box>
+              </Typography>
+              <ProjectLinks
+                list={mainList}
+                addNewProject={addNewProject}
+                deleteProject={deleteProject}
+              />
+            </Box>
           </Grid>
-          <Divider orientation="vertical" flexItem />
-          <Grid item>
+          <Grid item sm={9} className="todo-grid">
+            <Divider orientation="vertical" flexItem />
             <Switch>
               {mainList.map((project) => {
                 return (
@@ -150,6 +153,9 @@ function App() {
                   </Route>
                 );
               })}
+              <Route path="/">
+                <Home />
+              </Route>
             </Switch>
           </Grid>
         </Grid>
