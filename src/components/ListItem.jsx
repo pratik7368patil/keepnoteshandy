@@ -14,8 +14,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     margin: "10px 10px 10px 0px",
     maxWidth: 360,
-    width: 360,
+    width: "100%",
     borderTop: "3px solid #6596FF",
+    [theme.breakpoints.down("sm")]: {
+      width: 298,
+    },
   },
   details: {
     display: "flex",

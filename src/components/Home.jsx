@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   main: {
-    width: "93.5%",
+    width: "100%",
     backgroundImage:
       "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://picsum.photos/900/600)",
     backgroundSize: "cover",

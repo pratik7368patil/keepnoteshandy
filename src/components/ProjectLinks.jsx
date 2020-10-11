@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProjectLinks(props) {
   const classes = useStyles();
 
-  const { list, addNewProject, deleteProject } = props;
+  const { list, addNewProject, deleteProject, customId } = props;
   const [validityOfNewProject, setValidityOfNewProject] = React.useState(false);
   const updateValidityAndAddNewProject = (event) => {
     setValidityOfNewProject(addNewProject(event));
@@ -47,7 +47,7 @@ export default function ProjectLinks(props) {
     <div className={classes.root}>
       <TextField
         error={validityOfNewProject}
-        id="add-project"
+        id={`add-new-project-${customId}`}
         label="Add Project"
         variant="outlined"
         helperText={validityOfNewProject ? "Project already exists!" : ""}
