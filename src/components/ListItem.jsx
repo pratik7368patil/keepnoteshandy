@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   doneBtn: {
-    color: "#228b22",
+    color: "#6596FF",
   },
 }));
 
@@ -57,7 +57,7 @@ export default function ListItem(props) {
     <Card className={classes.root} variant="outlined">
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography variant="body1" color="textSecondary">
+          <Typography variant="body2" color="textSecondary">
             Task Details
           </Typography>
           <Typography

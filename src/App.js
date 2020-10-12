@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     background: "#2b2b2b",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
+    boxShadow: "none",
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
@@ -220,7 +220,7 @@ function App(props) {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap>
-              Keep Notes
+              <Box fontWeight="fontWeightBold">Keep Notes</Box>
             </Typography>
           </Toolbar>
         </AppBar>

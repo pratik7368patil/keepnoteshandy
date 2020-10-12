@@ -50,6 +50,7 @@ export default function ProjectLinks(props) {
         id={`add-new-project-${customId}`}
         label="Add Project"
         variant="outlined"
+        size="small"
         helperText={validityOfNewProject ? "Project already exists!" : ""}
         onKeyUp={(event) => updateValidityAndAddNewProject(event)}
       />
