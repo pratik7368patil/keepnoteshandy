@@ -25,6 +25,9 @@ export default function List(props) {
   const [toogleSearch, setToogleSearch] = React.useState(false);
 
   const onToogleSearch = () => {
+    if (toogleSearch) {
+      setSearchData("");
+    }
     setToogleSearch(!toogleSearch);
   };
 

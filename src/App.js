@@ -94,7 +94,7 @@ function App(props) {
       }
       const newListItem = mainList.filter((item) => item.id === projectId);
       const newTask = {
-        id: newListItem[0].project.length + 1,
+        id: Math.floor(Math.random() * 100000000 + 1),
         content: event.target.value,
         isComplete: false,
       };
@@ -160,7 +160,7 @@ function App(props) {
     }
     if (event.keyCode === 13) {
       const newProject = {
-        id: mainList.length + 1,
+        id: Math.floor(Math.random() * 100000000 + 1),
         name: event.target.value.replace(/\b[a-z]/g, (char) =>
           char.toUpperCase()
         ),
